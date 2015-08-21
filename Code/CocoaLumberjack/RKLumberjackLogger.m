@@ -8,7 +8,13 @@
 
 #if RKLOG_USE_COCOALUMBERJACK && __has_include(<CocoaLumberjack/CocoaLumberjack.h>)
 #import "RKLumberjackLogger.h"
+
+#pragma clang diagnostic push
+// See CocoaLumberjack #543 (https://github.com/CocoaLumberjack/CocoaLumberjack/issues/543)
+// Diagnostic pragmas can be removed upon release of CocoaLumberjack >=2.0.2 
+#pragma clang diagnostic ignored "-Wunused-function"
 #import <CocoaLumberjack/CocoaLumberjack.h>
+#pragma clang diagnostic pop
 
 @implementation RKLumberjackLogger
 
